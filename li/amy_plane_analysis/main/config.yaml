@@ -1,0 +1,44 @@
+# Конфигурационный файл для process_ecg.py
+
+# Имя датасета: amy | ph | lef
+# Определяет папки: features_*, models_*, visualizations_*
+dataset_name: "lef"
+
+# Путь к директории с данными
+# амиоидоз: /Users/moomintroll/Desktop/Научка_мага/Amy_dataset
+# лёгочная гипертензия: /Users/moomintroll/Desktop/Научка_мага/Ph_datasets
+# сниженная фракция выброса: /Users/moomintroll/Desktop/Научка_мага/Lef_datasets
+dataset_dir: '/Users/moomintroll/Desktop/Научка_мага/Lef_datasets'
+
+# Какой датасет использовать:
+# - "original" - исходные файлы (X_train.pkl, X_test.pkl)
+# - "stratified" - стратифицированные файлы (X_train_stratified.pkl, X_test_stratified.pkl)
+dataset_type: "original" 
+# Частота дискретизации ЭКГ сигнала
+sampling_frequency: 500
+
+# Параметры обработки
+processing:
+  # Количество периодов для усреднения ВЭКГ
+  num_periods: 5
+  
+  # Количество локальных регионов для расчета R²
+  num_regions: 5
+
+# Параметры визуализации
+visualization:
+  # Номер пациента для визуализации ВЭКГ (начиная с 0)
+  patient_idx: 1
+
+inference_paths:
+  input_dir: /Users/moomintroll/Desktop/tsk/inference_inputs
+  output_dir: /Users/moomintroll/Desktop/tsk/Diagnostics_of_cardiovascular_diseases/inference_results
+
+  model_path: /Users/moomintroll/Desktop/tsk/Diagnostics_of_cardiovascular_diseases/models_lef/random_forest/model.pkl
+  scaler_path: /Users/moomintroll/Desktop/tsk/Diagnostics_of_cardiovascular_diseases/models_lef/random_forest/scaler.pkl
+  threshold_path: /Users/moomintroll/Desktop/tsk/Diagnostics_of_cardiovascular_diseases/models_lef/random_forest/threshold.json
+
+ecg:
+  sfreq: 500
+  num_regions: 5
+  num_periods: 5

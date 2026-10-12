@@ -1,0 +1,53 @@
+# Виртуальные окружения
+venv/
+.venv/
+env/
+ENV/
+
+# Логи
+*.log
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Django / локальные данные
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Результаты интерпретации (генерируются скриптом)
+interpretation_outputs/
+dataset_stats/
+
+# Модели 
+*.pt
+*.pth
+*.pkl
+*.pickle
+
+*.safetensors
+ECGApp/ecg_app/model/
+ECGApp/ecg_app/model250/
+preprocessing_outputs/
+training_args.bin

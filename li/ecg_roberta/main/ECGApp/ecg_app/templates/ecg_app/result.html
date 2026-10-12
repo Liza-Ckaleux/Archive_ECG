@@ -1,0 +1,10 @@
+            <div class="result-section">
+                <h2>Диагноз</h2>
+                <p class="diagnosis {% if is_sick %}sick{% else %}normal{% endif %}">
+                    {{ diagnosis }}
+                </p>
+            </div> 
+            <div class="plots-section">
+                <h3>Сырой ЭКГ-сигнал</h3>
+                <img src="{{ plot_url }}" alt="Сырой ЭКГ" style="max-width:100%; border:1px solid #ccc; margin-bottom:20px;">
+            </div> 

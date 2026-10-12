@@ -1,0 +1,5 @@
+Django==5.0.2
+numpy==1.26.3
+pandas==2.1.4
+mne==1.6.1
+matplotlib==3.8.2 

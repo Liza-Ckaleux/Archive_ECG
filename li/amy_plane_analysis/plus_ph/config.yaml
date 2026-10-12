@@ -1,0 +1,29 @@
+# Конфигурационный файл для process_ecg.py
+
+# Путь к директории с данными
+# амиоидоз: /Users/moomintroll/Desktop/Научка_мага/Amy_dataset
+# лёгочная гипертензия: /Users/moomintroll/Desktop/Научка_мага/Ph_datasets
+dataset_dir: "/Users/moomintroll/Desktop/Научка_мага/Ph_datasets"
+
+# Какой датасет использовать:
+# - "original" - исходные файлы (X_train.pkl, X_test.pkl)
+# - "stratified" - стратифицированные файлы (X_train_stratified.pkl, X_test_stratified.pkl)
+dataset_type: "original" 
+# Частота дискретизации ЭКГ сигнала
+sampling_frequency: 500
+
+# Директория для сохранения признаков
+features_dir: "features"
+
+# Параметры обработки
+processing:
+  # Количество периодов для усреднения ВЭКГ
+  num_periods: 5
+  
+  # Количество локальных регионов для расчета R²
+  num_regions: 4
+
+# Параметры визуализации
+visualization:
+  # Номер пациента для визуализации ВЭКГ (начиная с 0)
+  patient_idx: 2

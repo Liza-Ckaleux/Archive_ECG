@@ -1,0 +1,31 @@
+{% extends 'ecg_app/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="text-center">ECG Analysis Results</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{{ plot_url }}" class="img-fluid" alt="ECG Plot">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Диагноз</h4>
+                                <p class="lead {% if is_sick %}text-danger{% else %}text-dark{% endif %}">
+                                    {{ diagnosis }}
+                                </p>
+                                <a href="/" class="btn btn-primary">Upload Another File</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

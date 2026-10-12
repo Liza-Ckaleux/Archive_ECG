@@ -1,0 +1,53 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+venv*/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Large datasets
+datasets*/
+*.pkl
+*.pickle
+
+# Experiment outputs: models, plots, reports
+artifacts*/
+*.pt
+*.pth
+*.joblib
+*.onnx
+
+# Logs and temp files
+*.log
+*.tmp
+.cache/

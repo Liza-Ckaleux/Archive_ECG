@@ -1,0 +1,42 @@
+train: "/Users/moomintroll/Desktop/Научка_мага/Autoencoder/datasets12/trainv5.pkl"
+test: "/Users/moomintroll/Desktop/Научка_мага/Autoencoder/datasets12/testv5.pkl"
+epochs: 60
+batch_size: 32
+latent_dim: 16
+lr: 0.0005
+val_fraction: 0.3333333333333333
+device: "cpu"
+seed: 42
+output: "/Users/moomintroll/Desktop/Научка_мага/Autoencoder/artifacts_temp"
+
+# Data preparation paths (used by prepare_train_zero.py and prepare_ptbxl_records500.py)
+edf_root: "/Users/moomintroll/Desktop/Научка_мага/kaggle_datasets"
+names_root: "/Users/moomintroll/Desktop/Научка_мага/Autoencoder/names"
+datasets12_dir: "/Users/moomintroll/Desktop/Научка_мага/Autoencoder/datasets12"
+ptbxl_root: "/Users/moomintroll/Desktop/Научка_мага/ptbxl-dataset"
+
+# Выбор датасета (как в amy_plane_analysis): имя патологии и путь к данным
+# Если заданы dataset_name и dataset_dir и в папке есть X_train.pkl — используется формат Ph (X_train/X_test, y_train/y_test)
+# и сплит: от трейна 0.125 на валидацию, тест целиком на тест. Результаты в artifacts_ensemble_xgb_{dataset_name}
+# Для формата по отведениям (train2i.pkl, testi.pkl) оставьте dataset_name пустым и укажите train2_dir/test_dir
+dataset_name: "ph"   # "ph" | "lef" | "amy" — результаты в artifacts_ensemble_xgb_{dataset_name}; "" = датасет по отведениям
+dataset_dir: "/Users/moomintroll/Desktop/Научка_мага/Ph_datasets"    # для ph: "/Users/moomintroll/Desktop/Научка_мага/Ph_datasets"
+
+# Ensemble model paths (используются, если dataset_name пустой)
+# train2: данные для обучения ансамбля (оба класса)
+# test: тест (при формате по отведениям режется на val/test)
+train2_dir: "/Users/moomintroll/Desktop/Научка_мага/Autoencoder/datasets12"
+test_dir: "/Users/moomintroll/Desktop/Научка_мага/Autoencoder/datasets12"
+artifacts_base_dir: "/Users/moomintroll/Desktop/Научка_мага/Autoencoder"
+ensemble_output: "artifacts_ensemble_xgb"
+
+# XGBoost ensemble parameters
+n_estimators: 300
+learning_rate: 0.01
+max_depth: 8
+
+# Raw multilead ECG figure generation (assembly_xgboost.py)
+generate_raw_ecg_figures: true
+n_periods: 5
+
+

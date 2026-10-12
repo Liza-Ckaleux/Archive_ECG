@@ -1,0 +1,97 @@
+{% extends 'ecg_app/base.html' %}
+
+{% block content %}
+<style>
+    /* Стили для фонового изображения */
+    body::before {
+        content: "";
+        background-image: url('https://www.thestreet.com/.image/t_share/MTY4NjQwNDMyNzM3NDk0NjYz/mixed-outcomes-for-la-jolla-pharma-shock-drug-fuels-debate-over-sales-potential.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+    
+    .card {
+        background-color: rgba(230, 255, 230, 0.9); /* Добавляем прозрачность карточке */
+    }
+    
+    /* Сохраняем ваши предыдущие стили для кнопок */
+    #browse-button {
+        background-color: white !important;
+        border-color: #ced4da;
+        color: #495057;
+    }
+    #browse-button:hover {
+        background-color: #f8f9fa !important;
+    }
+    
+    .btn-success {
+        background-color: #006600;
+        border-color: #006600;
+    }
+    .btn-success:hover {
+        background-color: #004d00;
+        border-color: #004d00;
+    }
+</style>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Загрузка файла ЭКГ</h3>
+            </div>
+            <div class="card-body">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="ecg_file" class="form-label">Выберите файл</label>
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="ecg_file" name="ecg_file" accept=".edf" required style="display: none;">
+                            <input type="text" class="form-control" id="file-name" placeholder="Файл не выбран" readonly>
+                            <button class="btn btn-outline-secondary bg-white" type="button" id="browse-button">Обзор</button>
+                        </div>
+                        <div class="form-text">Поддерживаются только файлы в формате EDF</div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">Загрузить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInput = document.getElementById('ecg_file');
+        const fileNameInput = document.getElementById('file-name');
+        const browseButton = document.getElementById('browse-button');
+        
+        browseButton.addEventListener('click', function() {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || 'Файл не выбран';
+            fileNameInput.value = fileName;
+        });
+    });
+</script>
+{% endblock %}
